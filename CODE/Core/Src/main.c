@@ -132,7 +132,7 @@ int main(void) {
 	mpu.initialize();
 
 	if (!mpu.testConnection()) {
-		printf("⚠️ MPU NOT  CONNECTED");
+		printf("⚠️ MPU NOT CONNECTED");
 	}
 
 	devStatus = mpu.dmpInitialize();
