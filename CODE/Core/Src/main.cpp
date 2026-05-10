@@ -159,7 +159,7 @@ int main(void) {
 				float yaw = ypr[0] * 180.0f / M_PI;
 				float pitch = ypr[1] * 180.0f / M_PI;
 				float roll = ypr[2] * 180.0f / M_PI;
-				DBG("YPR: Yaw=%.2f  Pitch=%.2f  Roll=%.2f\r\n", yaw, pitch,
+				DBG("YPR: Yw=%.2f  Pitch=%.2f  Roll=%.2f\r\n", yaw, pitch,
 						roll);
 			}
 		}
