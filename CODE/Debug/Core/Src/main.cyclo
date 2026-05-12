@@ -28,9 +28,10 @@ C:\ST\STM32CubeIDE_1.19.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 ../Core/Inc/MPU6050_6Axis_MotionApps_V6_12.h:583:9:uint8_t MPU6050::dmpReadAndProcessFIFOPacket(uint8_t, uint8_t*)	4
 ../Core/Inc/MPU6050_6Axis_MotionApps_V6_12.h:608:10:uint16_t MPU6050::dmpGetFIFOPacketSize()	1
 ../Core/Inc/MPU6050_6Axis_MotionApps_V6_12.h:614:9:uint8_t MPU6050::dmpGetCurrentFIFOPacket(uint8_t*)	1
+../Core/Src/main.c:79:1:int __io_putchar(int)	1
 ../Core/Src/main.c:84:6:void HAL_GPIO_EXTI_Callback(uint16_t)	2
 ../Core/Src/main.c:102:5:int main()	5
-../Core/Src/main.c:181:6:void SystemClock_Config()	3
-../Core/Src/main.c:232:6:void Error_Handler()	1
-../Core/Src/main.c:240:1:void __static_initialization_and_destruction_0()	1
-../Core/Src/main.c:240:1:c)	1
+../Core/Src/main.c:186:6:void SystemClock_Config()	3
+../Core/Src/main.c:237:6:void Error_Handler()	1
+../Core/Src/main.c:245:1:void __static_initialization_and_destruction_0()	1
+../Core/Src/main.c:245:1:c)	1

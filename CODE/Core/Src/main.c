@@ -76,10 +76,10 @@ void SystemClock_Config(void);
 #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 #endif
 
-//PUTCHAR_PROTOTYPE {
-//	HAL_UART_Transmit(&huart2, (uint8_t*) &ch, 1, HAL_MAX_DELAY);
-//	return ch;
-//}
+PUTCHAR_PROTOTYPE {
+	HAL_UART_Transmit(&huart2, (uint8_t*) &ch, 1, HAL_MAX_DELAY);
+	return ch;
+}
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	if (GPIO_Pin == GPIO_PIN_8) {
@@ -126,9 +126,14 @@ int main(void)
   MX_I2C1_Init();
   MX_USART2_UART_Init();
   MX_TIM1_Init();
-  MX_TIM4_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 	setvbuf(stdout, NULL, _IONBF, 0);  // ✅ Disable stdout buffering
+
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);   // Pan servo ON
+	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);   // Tilt servo ON
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 1500); // center
+	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 1500); // center
 
 	printf("\033[2J\033[H");            // Clear console
 	printf("=== MPU6050 DMP Init ===\r\n");
