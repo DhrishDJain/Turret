@@ -33,7 +33,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/usart.h ../Core/Inc/gpio.h \
  ../Core/Inc/MPU6050_6Axis_MotionApps_V6_12.h ../Core/Inc/MPU6050.h \
  ../Core/Inc/I2Cdev.h ../Core/Inc/ArduinoWrapper.h ../Core/Inc/usart.h \
- ../Core/Inc/helper_3dmath.h
+ ../Core/Inc/helper_3dmath.h ../Core/Inc/VL53L0X.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -76,3 +76,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/ArduinoWrapper.h:
 ../Core/Inc/usart.h:
 ../Core/Inc/helper_3dmath.h:
+../Core/Inc/VL53L0X.h:
