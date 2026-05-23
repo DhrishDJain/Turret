@@ -10,13 +10,18 @@ void Servo_init() {
 void Servo_cal_routine(void) {
 	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 1900);
 	HAL_Delay(300);                            // ← was delay() — wrong on STM32
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 1500);      // center tilt
+	HAL_Delay(300);                            // ← was delay() — wrong on STM32
 	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 1100);
 	HAL_Delay(300);
 	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 1500);      // center tilt
+//	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 1900);
+//	HAL_Delay(200);
+//	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 1100); // ← was 1900 again (bug!)
+//	HAL_Delay(200);
+//	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 1500);      // center pan
+}
 
-	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 1900);
-	HAL_Delay(200);
-	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 1100); // ← was 1900 again (bug!)
-	HAL_Delay(200);
-	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 1500);      // center pan
+void Servo_pan(int US) {
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, US);
 }

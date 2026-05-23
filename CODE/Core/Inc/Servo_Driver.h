@@ -11,6 +11,7 @@ extern "C" {
 
 void Servo_cal_routine(void);
 void Servo_init(void);
+void Servo_pan(int US);
 
 #ifdef __cplusplus
 }
