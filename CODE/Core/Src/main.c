@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "MPU6050_6Axis_MotionApps_V6_12.h"
 #include "VL53L0X.h"
+#include "Servo_Driver.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -59,8 +60,7 @@ float ypr[3];
 volatile bool mpuInterrupt = false;
 
 // ── VL53L0X (new) ──
-// ── VL53L0X (new) ──
-statInfo_t_VL53L0X tofData;       // ← correct type for Squieler lib
+statInfo_t_VL53L0X tofData;
 uint16_t distance_mm = 0;
 uint32_t lastTofTick = 0;
 
@@ -132,7 +132,6 @@ int main(void) {
 	MX_I2C1_Init();
 	MX_USART2_UART_Init();
 	MX_TIM1_Init();
-	MX_TIM2_Init();
 	/* USER CODE BEGIN 2 */
 	setvbuf(stdout, NULL, _IONBF, 0);
 	printf("\033[2J\033[H");
@@ -170,10 +169,11 @@ int main(void) {
 
 	// ── Servo PWM Start ──
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);   // Tilt servo
-	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);   // Pan servo
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);   // Pan servo
 	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 1500); // center
-	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 1500); // center
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 1500); // center
 	printf("[SERVO] ✅ PWM Started\r\n");
+	Servo_cal_routine();
 
 	printf("=== Running ===\r\n");
 	/* USER CODE END 2 */
@@ -181,6 +181,11 @@ int main(void) {
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
+		//TODO Add Servo control with limit switch
+		//TODO Make a calibration routing
+		//TODO Add RTOS
+		//TODO Add CAM
+
 		// ── MPU6050: highest priority, runs every interrupt ──
 		if (mpuInterrupt) {
 			mpuInterrupt = false;
@@ -219,6 +224,7 @@ int main(void) {
 				DBG("[TOF] Distance: %d mm\r\n", distance_mm);
 			}
 		}
+
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
