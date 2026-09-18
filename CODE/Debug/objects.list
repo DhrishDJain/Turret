@@ -1,6 +1,4 @@
 "./Core/Src/ArduinoWrapper.o"
-"./Core/Src/I2Cdev.o"
-"./Core/Src/MPU6050.o"
 "./Core/Src/Servo_Driver.o"
 "./Core/Src/VL53L0X.o"
 "./Core/Src/gpio.o"
@@ -32,3 +30,4 @@
 "./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o"
 "./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o"
 "./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o"
+"./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_usart.o"
